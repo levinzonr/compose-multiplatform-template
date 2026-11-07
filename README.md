@@ -21,6 +21,8 @@ Use the run configurations provided by the run widget in your IDE's toolbar. You
 
 ### Running tests
 
+See [the agent testing guide](docs/testing.md) for TDD with GIVEN/WHEN/THEN and fakes, Maestro interaction flows, and stateless Compose preview checks. Agents must follow [the testing skill](skills/agent-testing/SKILL.md) before completing behavior or UI changes.
+
 Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
 
 - Android tests: `./gradlew :shared:testAndroidHostTest`

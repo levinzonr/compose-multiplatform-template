@@ -5,6 +5,8 @@ description: Run and maintain Spotless, Detekt, and focused architecture validat
 
 Read `AGENTS.md`, the root Gradle file, `.editorconfig`, and `config/detekt/detekt.yml` before changing quality configuration.
 
+Follow `skills/agent-testing/SKILL.md` for behavioral verification: TDD with GIVEN / WHEN / THEN and fakes, Maestro flows for interactions, and rendered previews for stateless UI checks. Gradle quality checks alone do not verify these journeys or visuals.
+
 Run the checks appropriate to the change:
 
 ```shell

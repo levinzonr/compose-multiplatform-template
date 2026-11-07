@@ -5,6 +5,8 @@ description: Create or refactor a feature in this Compose Multiplatform template
 
 Read `AGENTS.md` at the repository root. Use `features/greeting` as the executable example, preserving feature ownership rather than copying its business behavior.
 
+For behavior and UI changes, follow `skills/agent-testing/SKILL.md`: business logic uses TDD with GIVEN / WHEN / THEN and fakes, journeys use Maestro, and stateless UI uses rendered preview checks.
+
 For a new capability, identify its feature and domain contract first. Keep domain models, repository interfaces, and use cases under that feature. Implement repositories/data sources in data; place platform adapters in framework and mirror packages in Android/iOS source sets. Add each required layer package when implementing a feature, but create framework only for an actual native concern. Avoid speculative APIs, placeholder DAOs, and global layer directories.
 
 Before implementing feature UI, read `skills/compose-design-system/SKILL.md`. Evaluate each proposed component for reuse in `:designsystem`; use AppTheme tokens exclusively and add missing tokens there first.

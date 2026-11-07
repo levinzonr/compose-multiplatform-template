@@ -7,14 +7,19 @@ import kotlin.test.assertEquals
 
 class DefaultGreetingRepositoryTest {
     @Test
-    fun mapsPlatformNameIntoGreeting() {
+    fun givenPlatformNameWhenGreetingRequestedThenMapsMessageAndPlatform() {
+        // GIVEN
         val source = object : PlatformDataSource {
             override fun getPlatformName(): String = "Test OS"
         }
         val repository = DefaultGreetingRepository(source)
+        // WHEN
+        val actual = repository.getGreeting()
+
+        // THEN
         assertEquals(
             Greeting(message = "Hello, Test OS!", platformName = "Test OS"),
-            repository.getGreeting()
+            actual
         )
     }
 }

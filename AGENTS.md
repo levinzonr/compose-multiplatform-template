@@ -69,6 +69,14 @@ Versions and aliases belong in `gradle/libs.versions.toml`. Verify APIs against 
 
 ## Validation
 
+Read `skills/agent-testing/SKILL.md` for every behavior or UI change. Follow [docs/testing.md](docs/testing.md) and verify your own changes before handing them back.
+
+- Business logic uses TDD: write a failing behavior test, run it and confirm the expected failure, implement the minimum change, then refactor with tests green. Use explicit GIVEN / WHEN / THEN sections and behavior-oriented test names.
+- Use small configurable fakes behind domain/data-source contracts, placed in mirrored test packages. Construct subjects directly; avoid live Koin, network, storage, native services, mocks, and real-time sleeps in business tests. Test observable outcomes rather than private calls.
+- Use Maestro flows under `.maestro/` for user interactions and navigation. Add or update the relevant flow with each changed journey. Assert outcomes after actions, use accessible text or stable IDs, and keep flows independent.
+- For stateless screens/components, add deterministic previews of meaningful states and render/inspect them for simple visual checks. Use Android Studio's preview renderer when available. Check layout, text, clipping, and light/dark contrast. A compiled preview alone is not visual verification; previews do not prove interaction behavior.
+- Report exact commands, results, rendered previews, and blocked checks. Never describe an unrun test or uninspected preview as passing.
+
 Add meaningful tests for domain behavior, data mapping/error handling, and ViewModel state transitions with fake domain collaborators. Mirror feature packages under `commonTest`; use platform tests for actual native integration. Do not retain arithmetic placeholder tests or tests that only check file names.
 
 ```shell

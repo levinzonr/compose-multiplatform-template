@@ -1,0 +1,26 @@
+appId: com.levinzonr.compose.template
+---
+# GIVEN a fresh launch with collapsed content
+- launchApp:
+    clearState: true
+- assertVisible: "Click me!"
+- assertVisible: "Platform details"
+- assertNotVisible: "Hello, Android.*!"
+# WHEN content is expanded THEN the greeting is visible
+- tapOn: "Click me!"
+- assertVisible: "Hello, Android.*!"
+# WHEN details are opened and closed THEN entry state is preserved
+- tapOn: "Platform details"
+- assertVisible: "Back"
+- assertNotVisible: "Click me!"
+- tapOn: "Back"
+- assertVisible: "Hello, Android.*!"
+# WHEN content is collapsed THEN the greeting disappears
+- tapOn: "Click me!"
+- assertNotVisible: "Hello, Android.*!"
+# WHEN system back closes details THEN the greeting screen returns
+- tapOn: "Platform details"
+- assertVisible: "Back"
+- back
+- assertVisible: "Click me!"
+- assertVisible: "Platform details"
